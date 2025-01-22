@@ -30,7 +30,6 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'dj_dfm',       # Add the service name
-    'dj_dfm:8000',  # Include the port if necessary
 ]
 
 # Application definition
