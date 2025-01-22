@@ -26,8 +26,12 @@ SECRET_KEY = 'django-insecure-@0*@4jb=q4mbm$dk8=er3xm89+yvooxcl-rjxrm2#-w-tr-4$8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*',]
-
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'dj_dfm',       # Add the service name
+    'dj_dfm:8000',  # Include the port if necessary
+]
 
 # Application definition
 
