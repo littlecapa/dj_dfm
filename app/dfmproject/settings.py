@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'dj_dfm',       # Add the service name
+    'dj-dfm',       # Add the service name
 ]
 
 # Application definition
