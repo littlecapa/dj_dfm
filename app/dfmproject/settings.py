@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': os.getenv('POSTGRES_DB', 'airflow'),
         'USER': os.getenv('POSTGRES_USER', 'airflow'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'airflow'),
-        'HOST': '127.0.0.1',  # Docker service name for the PostgreSQL container
+        'HOST': os.getenv('DB_HOST', '127.0.0.1'),
         'PORT': '5432',
     }
 }
