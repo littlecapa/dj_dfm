@@ -32,3 +32,25 @@ class Config(models.Model):
 
     def __str__(self):
         return f"Configuration {self.version}"
+
+class LichessConfigModel(models.Model):
+    version = models.CharField(max_length=10, default="1.0")
+    chunk_size = models.IntegerField(default=100 * 1024 * 1024)
+    download_folder = models.CharField(max_length=255, default='lichess_downloads')
+    unzip_volume = models.CharField(max_length=255, default='lichess_unzip_volume')
+    unzip_folder = models.CharField(max_length=255, default='lichess_unzipped')
+    align_prefix = models.CharField(max_length=8, default='aligned_')
+
+    class Meta:
+        verbose_name = "Lichess Configuration"
+        verbose_name_plural = "Lichess Configuration"
+
+    def save(self, *args, **kwargs):
+        # Ensure only one Config instance exists
+        if not LichessConfigModel.objects.exists() or self.pk is not None:
+            super().save(*args, **kwargs)
+        else:
+            raise ValueError("Only one Lichess Config instance is allowed.")
+
+    def __str__(self):
+        return f"Lichess Configuration {self.version}"

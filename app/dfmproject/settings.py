@@ -83,6 +83,7 @@ DATABASES = {
         'USER': os.getenv('POSTGRES_USER', 'airflow'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'airflow'),
         'HOST': os.getenv('DB_HOST', 'postgres'),
+        #'HOST': '0.0.0.0',
         'PORT': '5432',
     }
 }
