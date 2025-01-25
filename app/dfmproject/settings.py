@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from libs.net_lib import get_local_ip
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,11 +84,14 @@ DATABASES = {
         'USER': os.getenv('POSTGRES_USER', 'airflow'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'airflow'),
         'HOST': os.getenv('DB_HOST', 'postgres'),
-        #'HOST': '0.0.0.0',
         'PORT': '5432',
     }
 }
-
+server_ip = get_local_ip()
+print(f"Server IP: {server_ip}")
+if server_ip=="192.168.178.37":
+    DATABASES['default']['HOST'] = "0.0.0.0"
+    print(f"Database: {DATABASES}")  
 
 
 # Password validation
