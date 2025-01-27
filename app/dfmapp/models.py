@@ -36,10 +36,12 @@ class Config(models.Model):
 class LichessConfigModel(models.Model):
     version = models.CharField(max_length=10, default="1.0")
     chunk_size = models.IntegerField(default=100 * 1024 * 1024)
+    download_volume = models.CharField(max_length=255, default='xxx')
     download_folder = models.CharField(max_length=255, default='lichess_downloads')
     unzip_volume = models.CharField(max_length=255, default='lichess_unzip_volume')
     unzip_folder = models.CharField(max_length=255, default='lichess_unzipped')
-    align_prefix = models.CharField(max_length=8, default='aligned_')
+    aligned_volume = models.CharField(max_length=255, default='lichess_aligned_volume')
+    aligned_folder = models.CharField(max_length=255, default='lichess_aligned_volume')
 
     class Meta:
         verbose_name = "Lichess Configuration"
