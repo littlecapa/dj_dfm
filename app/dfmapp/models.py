@@ -38,10 +38,14 @@ class LichessConfigModel(models.Model):
     chunk_size = models.IntegerField(default=100 * 1024 * 1024)
     download_volume = models.CharField(max_length=255, default='xxx')
     download_folder = models.CharField(max_length=255, default='lichess_downloads')
+    unzip_script_path = models.CharField(max_length=255, default='/opt/airflow/dags/scripts/unzst.sh')
     unzip_volume = models.CharField(max_length=255, default='lichess_unzip_volume')
     unzip_folder = models.CharField(max_length=255, default='lichess_unzipped')
     aligned_volume = models.CharField(max_length=255, default='lichess_aligned_volume')
     aligned_folder = models.CharField(max_length=255, default='lichess_aligned_volume')
+    zst_filename_pattern = models.CharField(max_length=32, default='lichess*eval.jsonl.zst')
+    json_filename_pattern = models.CharField(max_length=32, default='lichess_eval_')
+    json_per_file = models.IntegerField(default=1000)
 
     class Meta:
         verbose_name = "Lichess Configuration"
